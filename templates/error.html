@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Error</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #e74c3c;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+    .error-container {
+      background-color: #1f1f1f;
+      padding: 40px 30px;
+      border-radius: 12px;
+      max-width: 480px;
+      box-shadow: 0 4px 20px rgba(231, 76, 60, 0.4);
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      line-height: 1.5;
+      color: #f39c12;
+    }
+    a.button {
+      background-color: #e74c3c;
+      color: #121212;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 12px 30px;
+      border-radius: 25px;
+      transition: background-color 0.3s ease;
+      display: inline-block;
+    }
+    a.button:hover {
+      background-color: #c0392b;
+    }
+  </style>
+</head>
+<body>
+  <div class="error-container">
+    <h1>Oops! Something went wrong.</h1>
+    <p>{{ error_message }}</p>
+    <a href="/" class="button">Go Back</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Classification Result</title>
+<style>
+  body {
+    background: #121212;
+    color: #eee;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  h1 {
+    margin-bottom: 1rem;
+  }
+  img {
+    max-width: 300px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px #222;
+    margin-bottom: 1.5rem;
+  }
+  .result-info {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  .progress-bar {
+    width: 300px;
+    height: 25px;
+    background: #333;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background-color: #5cb85c;
+    width: var(--fill-width, 0%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    color: white;
+    transition: width 0.5s ease-in-out;
+  }
+  .low-confidence {
+    background-color: #d9534f;
+  }
+  .medium-confidence {
+    background-color: #f0ad4e;
+  }
+  .high-confidence {
+    background-color: #5cb85c;
+  }
+  a.button {
+    background: #337ab7;
+    color: white;
+    padding: 0.7rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<h1>Classification Result</h1>
+
+<img src="{{ url_for('uploaded_file', filename=filename) }}" alt="Uploaded Image" />
+
+<div class="result-info">
+  <p><strong>Predicted Label:</strong> {{ label }}</p>
+  <p><strong>Confidence:</strong> {{ confidence }}%</p>
+</div>
+
+<div class="progress-bar">
+  <div 
+    class="progress-bar-fill
+    {% if confidence < 50 %}
+      low-confidence
+    {% elif confidence < 80 %}
+      medium-confidence
+    {% else %}
+      high-confidence
+    {% endif %}"
+    style="--fill-width: {{ confidence }}%;">
+    {{ confidence }}%
+  </div>
+</div>
+
+<a href="{{ url_for('index') }}" class="button">Classify Another Image</a>
+
+</body>
+</html>
